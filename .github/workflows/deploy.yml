@@ -37,5 +37,5 @@ jobs:
           aws-region: ap-south-1
 
       - name: Deploy to S3
-        run: aws s3 sync build/ s3://gha-vite-react-app --delete
+        run: aws s3 sync dist/ s3://gha-vite-react-app --delete
 
