@@ -1,1 +1,37 @@
+name: Manual Trigger Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      enviornment:
+        description: "Select Deployment Enviornment"
+        required: true
+        type: choice
+        options:
+          - dev
+          - test
+          - staging
+          - prod
+      app_version:
+        description: "Application Version"
+        required: true
 
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+  steps: 
+    - name: Show Deployment Details
+      run: |  
+        echo "Environment: ${{ github.event.inputs.environment }}" 
+        echo "App Version: ${{ github.event.inputs.app_version }}" 
+
+     - name: Checkout code
+       uses: actions/checkout@v4
+
+     - name: Deploy Application
+       run: |
+         echo "Deploying Application"
+         echo "Deployment Completed"
+        
+        
+    
